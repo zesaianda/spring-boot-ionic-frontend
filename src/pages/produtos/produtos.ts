@@ -27,7 +27,7 @@ export class ProdutosPage {
 
   ionViewDidLoad() {
     let categoria_id = this.navParams.get('categoria_id');
-    this.produtoService.findAByCategoria(categoria_id)
+    this.produtoService.findByCategoria(categoria_id)
       .subscribe(response => {
         this.items = response['content'];
         this.loadImageUrls();
@@ -47,7 +47,7 @@ export class ProdutosPage {
     }
   }
 
-  showDetail(){
-    this.navCtrl.push('ProdutoDetailPage');
+  showDetail(produto_id: string) {
+    this.navCtrl.push('ProdutoDetailPage', {produto_id: produto_id});
   }
 }
